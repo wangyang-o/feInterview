@@ -4,6 +4,6 @@ function currying(fn, ...args) {
         return fn(...args);
     }
     return (...args1) => {
-        currying(fn, ...args, ...args1)
+        currying(fn, ...args, ...args1);
     }
 }
