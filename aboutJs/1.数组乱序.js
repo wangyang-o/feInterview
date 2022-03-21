@@ -1,6 +1,4 @@
-
-
-
+// 数组乱序
 function handleArr(arr) {
     const newArr = [];
     newArr.length = arr.length;
@@ -14,7 +12,7 @@ function handleArr(arr) {
     return newArr;
 }
 
-
+// 数组乱序
 function handleArr1(arr) {
     const newArr = [];
     const len = arr.length;
