@@ -6,24 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        *{
-            
-        }
-        .parent {
-            display: flex;
-            border: 1px solid red;
-            width: 200px;
-            height: 200px;
-        }
 
-        .child {
-            width: 100px;
-            height: 100px;
-            flex: 1 1 120px;
-            border: 1px solid blue;
-        }
-    </style>
 </head>
 
 <body>
@@ -32,6 +15,32 @@
     </div>
 </body>
 <script>
-    const els= document.getElementsByClassName('*')
+    storageSet = (key, data, expires) => {
+        const values = {
+            data,
+            expires,
+            preTime: new Date().getTime()
+        }
+        window.localStorage.setItem(key, JSON.stringify(values));
+    }
+    storageGet = (key) => {
+        const values = JSON.parse(window.localStorage.getItem(key));
+        const curTime = new Date().getTime();
+        if (curTime - values?.preTime <= values?.expires) {
+            return values.data;
+        } else {
+            window.localStorage.removeItem(key);
+            return false;
+        }
+    }
+    storageSet('test', { name: 'wnagyang', age: 24 }, 1000 * 10);
+    console.log('set了');
+    setTimeout(() => {
+        console.log(storageGet('test'))
+    }, 1000 * 5);
+    setTimeout(() => {
+        console.log(storageGet('test'))
+    }, 1000 * 11);
 </script>
+
 </html>
