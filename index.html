@@ -9,6 +9,7 @@
 
 </head>
 
+    
 <body>
     <div class="parent">
         <div class="child"></div>
@@ -19,7 +20,7 @@
         const values = {
             data,
             expires,
-            preTime: new Date().getTime()
+            preTime: new Date().getTime(),
         }
         window.localStorage.setItem(key, JSON.stringify(values));
     }

@@ -3,11 +3,13 @@ class Event {
         this.events = {};
     }
     on(name, fn) {
-        if (this.event[name]) {
-            this.event[name].push(fn);
-        } else {
-            this.event[name] = [fn];
-        }
+        // if (this.event[name]) {
+        //     this.event[name].push(fn);
+        // } else {
+        //     this.event[name] = [fn];
+        // }
+        this.event[name] = this.event[name] || [];
+        this.event[name].push(fn);
     }
     emit(name) {
         this.event[name] && this.event[name].forEach(fn => fn());
