@@ -2,16 +2,15 @@
  * @param {string} s
  * @return {string}
  */
- var longestPalindrome = function (s) {
+var longestPalindrome = function (s) {
     let res = '';
     const handle = (l, r) => {
-        // 判断回文
         while (l >= 0 && r < s.length && s[l] === s[r]) {
             l--;
             r++;
         }
         const str = s.slice(l + 1, r);
-        res = str.length > res.length ? str : res;
+        res = res.length > str.length ? res : str;
     }
     for (let i = 0; i < s.length; i++) {
         // 奇数个
@@ -22,3 +21,4 @@
 
     return res;
 };
+console.log(longestPalindrome('bb'));
