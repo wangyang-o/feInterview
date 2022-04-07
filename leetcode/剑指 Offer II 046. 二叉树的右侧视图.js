@@ -20,6 +20,7 @@ const rightSideView1 = function (root) {
     const res = [];
     const dfs = (root, deep = 0) => {
         if (!root) return;
+        // 根据index覆盖之前的
         res[deep] = root.val;
         dfs(root.left, deep + 1);
         dfs(root.right, deep + 1);

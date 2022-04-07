@@ -21,6 +21,7 @@ function build(list, pid = -1) {
                 //   如果有子节点，添加到children属性
                 item.children = children;
             }
+            
             arr.push(item) // 将内容加入到数组中
         }
     })
