@@ -5,13 +5,13 @@
 class myPlugin {
     constructor(options) {
         this.options = options;
-        console.log(options)
+        console.log(options);
     }
     apply(compiler) {
         compiler.plugin('done', compilation => {
             console.log(compilation);
             console.log('done');
-        }
+        })
     }
     
 }
