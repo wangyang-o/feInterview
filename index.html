@@ -9,39 +9,28 @@
 
 </head>
 
-    
-<body>
+
+<body id="root">
     <div class="parent">
         <div class="child"></div>
+        <ul>
+            <li></li>
+        </ul>
     </div>
 </body>
 <script>
-    storageSet = (key, data, expires) => {
-        const values = {
-            data,
-            expires,
-            preTime: new Date().getTime(),
-        }
-        window.localStorage.setItem(key, JSON.stringify(values));
-    }
-    storageGet = (key) => {
-        const values = JSON.parse(window.localStorage.getItem(key));
-        const curTime = new Date().getTime();
-        if (curTime - values?.preTime <= values?.expires) {
-            return values.data;
-        } else {
-            window.localStorage.removeItem(key);
-            return false;
+    const root = document.getElementById('root');
+    const traverse = (root) => {
+        const queue = [root];
+        while (queue.length) {
+            const node = queue.shift();
+            console.log(node.tagName,node.className);
+            if (node.children.length) {
+                queue.push(...node.children);
+            }
         }
     }
-    storageSet('test', { name: 'wnagyang', age: 24 }, 1000 * 10);
-    console.log('set了');
-    setTimeout(() => {
-        console.log(storageGet('test'))
-    }, 1000 * 5);
-    setTimeout(() => {
-        console.log(storageGet('test'))
-    }, 1000 * 11);
+    traverse(root);
 </script>
 
 </html>
