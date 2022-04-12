@@ -47,24 +47,22 @@ console.log(JSON.stringify(handle(data), null, 2));
 
 // 树形结构转换成数组
 function treeToArray1(tree) {
-    // const arr = [];
-    // const stack = [];
-    // stack.push(tree);
-    // while (stack.length) {
-    //     const node = stack.shift();
-    //     arr.push(node);
-    //     if (node.children) {
-    //         node.children.forEach(item => {
-    //             stack.push(item);
-    //         })
-    //     }
-    // }
-    // return arr;
-    return tree.reduce((arr, item) => {
-        const { children = [], ...args } = item;
-        arr.push({ ...args },...treeToArray1(children));
-        return arr;
-    }, []);
+    const arr = [];
+    const stack = [];
+    stack.push(tree);
+    while (stack.length) {
+        const node = stack.shift();
+        arr.push(node);
+        if (node.children.length) {
+            stack.push(...node.children);
+        }
+    }
+    return arr;
+    // return tree.reduce((arr, item) => {
+    //     const { children = [], ...args } = item;
+    //     arr.push({ ...args },...treeToArray1(children));
+    //     return arr;
+    // }, []);
 
 }
 console.log(treeToArray1(build(data)));
