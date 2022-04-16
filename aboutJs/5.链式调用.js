@@ -1,52 +1,55 @@
 // js链式调用
-function arrange(name) {
+class Arrange {
+  constructor(name) {
     this.name = name;
     this.queue = [];
-  
-    this.execute = () => {
-      const fn = () => {
-        console.log(`${this.name} is notified!`)
-        this.next();
-      }
-      this.queue.push(fn);
-      return this;
-  
+    this.queue.push(() => {
+      console.log('init', this.name);
+      this.next();
+    })
+    Promise.resolve().then(res => {
+      this.next();
+    })
+  }
+  next() {
+    const fn = this.queue.shift();
+    fn && fn();
+  }
+  dosth(param) {
+    const fn = () => {
+      console.log(param);
+      this.next();
     }
-    this.dosth = (data) => {
-      const fn = () => {
-        console.log(`start to ${data}`);
-        this.next();
-      }
-      this.queue.push(fn);
-      return this;
-    }
-    this.await = (time) => {
-      const fn = () => {
-        setTimeout(() => {
-          console.log(`等待 ${time}秒`);
-          this.next();
-        }, time * 1000);
-      }
-      this.queue.push(fn);
-      return this;
-    }
-    this.awaitFirst = (time) => {
-      const fn = () => {
-        setTimeout(() => {
-          console.log(`awaitFirst等待 ${time}秒`);
-          this.next();
-        }, time * 1000);
-      }
-      this.queue.unshift(fn);
-      return this;
-    }
-    this.next = () => {
-      const fn = this.queue.shift();
-      fn && fn();
-    }
-    Promise.resolve().then(()=>{
-        this.next();
-    });
+    this.queue.push(fn);
     return this;
   }
-  new arrange('william').dosth('push').awaitFirst(1).await(2).execute();
+  awaitFirst(timeout) {
+    const fn = () => {
+      setTimeout(() => {
+        console.log('awaitFirst', timeout);
+        this.next();
+      }, timeout);
+    }
+    this.queue.unshift(fn);
+    return this;
+  }
+  await(timeout) {
+    const fn = () => {
+      setTimeout(() => {
+        console.log('await', timeout);
+        this.next();
+      }, timeout);
+    }
+    this.queue.push(fn);
+    return this;
+  }
+  execute() {
+    const fn = () => {
+      console.log('execute');
+      this.next();
+    }
+    this.queue.push(fn);
+    return this;
+  }
+}
+new Arrange('william').dosth('push').awaitFirst(1000).await(2000).execute();

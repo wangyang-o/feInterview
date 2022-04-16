@@ -10,8 +10,8 @@ function promiseAll(arr) {
                 if (count === arr.length) resolve(result);
             }, rej => {
                 reject(rej);
-            }
-            )
+            });
+            
         });
     });
 }

@@ -6,4 +6,9 @@ function myNew(constructor, ...args) {
     return res && res instanceof Object ? res : obj;
 }
 
-
+function myNew1(constructor, ...args) {
+    const obj = {};
+    obj.__proto__ = constructor.prototype;
+    const res = constructor.call(obj, ...args);
+    return res && res instanceof Object ? res : obj;
+}
