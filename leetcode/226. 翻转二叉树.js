@@ -1,6 +1,10 @@
 const reverseTree = (root) => {
     if (!root) return null;
-    root.left = reverseTree(root.right);
-    root.right = reverseTree(root.left);
+    const left = invertTree(root.left);
+    const right = invertTree(root.right);
+    root.left = right;
+    root.right = left;
+
+    
     return root;
 }
