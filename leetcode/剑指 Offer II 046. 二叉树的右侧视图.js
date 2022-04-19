@@ -28,15 +28,3 @@ const rightSideView1 = function (root) {
     dfs(root);
     return res;
 };
-
-// 比如这是几个异步任务
-
-
-function handle(fetch) {
-    new Promise((resolve, reject) => {
-        fetch().then(resolve, resolve);
-    });
-}
-
-Promise.all([handle(fetch1()), handle(fetch2()), handle(fetch3())]
-)

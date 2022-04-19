@@ -19,6 +19,7 @@ function throttle(fn, timeout) {
         }
     }
 }
+// 
 function throttle1(fn, delay) {
     let timer = null;
     return (...args) => {

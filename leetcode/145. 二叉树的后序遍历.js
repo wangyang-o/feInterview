@@ -38,7 +38,7 @@ const postorderTraversal1 = function (root) {
         // 右
         handle(node.right);
         // 根
-        res.unshift(node.val);
+        res.push(node.val);
     }
     handle(root);
 }

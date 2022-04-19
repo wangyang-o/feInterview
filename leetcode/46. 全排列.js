@@ -1,4 +1,5 @@
 // 46. 全排列
+// 时间复杂度
 var permute = function (nums) {
     let res = [];
     let len = nums.length;

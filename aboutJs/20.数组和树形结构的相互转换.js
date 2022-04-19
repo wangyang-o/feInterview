@@ -48,8 +48,7 @@ console.log(JSON.stringify(handle(data), null, 2));
 // 树形结构转换成数组
 function treeToArray1(tree) {
     const arr = [];
-    const stack = [];
-    stack.push(tree);
+    const stack = [tree];
     while (stack.length) {
         const node = stack.shift();
         arr.push(node);

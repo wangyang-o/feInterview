@@ -6,10 +6,10 @@ class Arrange {
     this.queue.push(() => {
       console.log('init', this.name);
       this.next();
-    })
+    });
     Promise.resolve().then(res => {
       this.next();
-    })
+    });
   }
   next() {
     const fn = this.queue.shift();
