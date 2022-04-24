@@ -53,3 +53,34 @@ class Arrange {
   }
 }
 new Arrange('william').dosth('push').awaitFirst(1000).await(2000).execute();
+
+// 方法二
+class Chains {
+  task = Promise.resolve()
+  eat() {
+    this.task = this.task.then(() => {
+      console.log('eat')
+    })
+    return this;
+  }
+  work() {
+    this.task = this.task.then(() => {
+      console.log('work')
+    })
+    return this;
+  }
+  sleep(n) {
+    this.task = this.task.then(() => {
+      console.log('sleep start')
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('sleep end')
+          resolve()
+        }, n * 1000)
+      })
+    })
+    return this;
+  }
+}
+const chain = () => new Chains()
+chain().eat().sleep(5).work().eat().work().sleep(10)

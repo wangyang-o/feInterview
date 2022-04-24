@@ -26,7 +26,7 @@ function f(arr, target) {
     let left = 0;
     let right = arr.length - 1;
     while (left <= right) {
-     let  mid = Math.floor((left + right) / 2);
+     let  mid = (left + right) >> 1;
       if (arr[mid] < target) {
         left = mid + 1;
       } else if (arr[mid] > target) {
