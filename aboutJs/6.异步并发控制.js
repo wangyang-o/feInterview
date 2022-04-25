@@ -28,12 +28,16 @@ class Scheduler {
     return res;
   }
 }
-const scheduler = new Scheduler(2);
-const fn1 = async () => {
-  setTimeout(() => {
-    console.log('fn1');
-  }, 2000);
+const scheduler = new Scheduler(3);
+
+const timeout = (time) => {
+  return new Promise(resolve => {setTimeout(resolve, time);})
 }
-const fn2 = async () => {
-  
-}
+
+const addTask = (time, order) => {
+  scheduler.add(() => timeout(time)).then((res) => console.log(`task ${order} done`));
+};
+addTask(1000, "1");
+addTask(500, "2");
+addTask(300, "3");
+addTask(400, "4");

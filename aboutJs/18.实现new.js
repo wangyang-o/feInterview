@@ -8,7 +8,7 @@ function myNew(constructor, ...args) {
 
 function myNew1(constructor, ...args) {
     const obj = {};
-    // 这句是影响性能的。产考MDN
+    // 这句是影响性能的。参考MDN
     obj.__proto__ = constructor.prototype;
     const res = constructor.call(obj, ...args);
     return res && res instanceof Object ? res : obj;

@@ -10,4 +10,4 @@ const rander1 = (template, obj) => {
 }
 
 const template = '我叫{{name}}，今年{{age}}岁，住在{{address.city}}';
-console.log(rander(template, {name: 'william', age: 18, address: {city: 'beijing'}}));
+console.log(rander1(template, { name: 'william', age: 18, address: 'beijing'}));
