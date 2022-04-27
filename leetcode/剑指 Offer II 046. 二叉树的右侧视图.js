@@ -15,6 +15,7 @@ const rightSideView = function (root) {
     }
     return res;
 };
+
 //  方法二
 const rightSideView1 = function (root) {
     const res = [];
@@ -28,3 +29,15 @@ const rightSideView1 = function (root) {
     dfs(root);
     return res;
 };
+
+const handle = (root) => {
+    const res = [];
+    const dfs = (root, deep = 0) => {
+        if (!root) return;
+        res[deep] = root.val;
+        dfs(root.left, deep + 1);
+        dfs(root.right, deep + 1);
+    }
+    dfs(root);
+    return res;
+ }

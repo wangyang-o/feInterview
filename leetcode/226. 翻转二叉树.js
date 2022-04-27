@@ -4,7 +4,5 @@ const reverseTree = (root) => {
     const right = invertTree(root.right);
     root.left = right;
     root.right = left;
-
-    
     return root;
 }
