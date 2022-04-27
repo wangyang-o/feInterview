@@ -24,6 +24,7 @@
         }
         cur = cur.next;
     }
+    //  如果有一个链表已经遍历完了，那么就直接将另一个链表的剩余部分链接到最后
     cur.next = list1 || list2;
     return head.next;
  };

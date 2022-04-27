@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="dom">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <p>
+            <span>hahah</span>
+        </p>
+    </div>
+
+</body>
+<script>
+    const dom = document.querySelector('#dom');
+    console.log(dom);
+    const domTree = (dom) => {
+        const res = {};
+        res.tagName = dom.tagName;
+        res.children = [];
+        dom.childNodes && dom.childNodes.forEach(item => {
+            if(item.nodeType === 1) {//1代表元素节点,3代表文本节点
+                res.children.push(domTree(item));
+            }
+        });
+        return res;
+    }
+    console.log(domTree(dom));
+</script>
+
+</html>
