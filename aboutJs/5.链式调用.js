@@ -69,18 +69,17 @@ class Chains {
     })
     return this;
   }
-  sleep(n) {
+  sleep(delay) {
     this.task = this.task.then(() => {
-      console.log('sleep start')
       return new Promise((resolve) => {
         setTimeout(() => {
-          console.log('sleep end')
+          console.log('sleep')
           resolve()
-        }, n * 1000)
+        }, delay)
       })
     })
     return this;
   }
 }
 const chain = () => new Chains()
-chain().eat().sleep(5).work().eat().work().sleep(10)
+chain().eat().sleep(1000).work();
