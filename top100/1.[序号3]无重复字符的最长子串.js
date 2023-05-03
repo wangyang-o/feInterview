@@ -1,3 +1,7 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
 var lengthOfLongestSubstring = function (s) {
   let max = 0;
   const len = s.length;
@@ -6,7 +10,6 @@ var lengthOfLongestSubstring = function (s) {
   const map = new Map();
   for (let right = 0; right < len; right++) {
     if (map.has(s[right])) {
-      
       left = Math.max(left, map.get(s[right]) + 1);
     }
     // 只记录最新的下标
@@ -15,4 +18,4 @@ var lengthOfLongestSubstring = function (s) {
   }
   return max;
 };
-console.log(lengthOfLongestSubstring('abba'));
+console.log(lengthOfLongestSubstring("abba"));
