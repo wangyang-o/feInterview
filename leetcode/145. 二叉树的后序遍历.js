@@ -10,6 +10,7 @@
  * @param {TreeNode} root
  * @return {number[]}
  */
+// 按照根右左，unshift则为左右根
  const postorderTraversal = function (root) {
     const res = [];
     const stack = [];
