@@ -22,10 +22,10 @@ function topoSort(files) {
   const dfs = (node) => {
     if (visited[node]) return;
     visited[node] = true;
-    result.push(node);
     for (const item of graph[node]) {
       dfs(item);
     }
+    result.push(node);
   };
 
   for (const node of Object.keys(graph)) {

@@ -22,5 +22,17 @@ function handleArr1(arr) {
     }
     return newArr;
 }
+function shuffleArray(array) {
+  // 遍历数组
+  for (let i = array.length - 1; i > 0; i--) {
+    // 生成随机索引
+    const j = Math.floor(Math.random() * (i + 1));
+
+    // 交换当前元素和随机位置的元素
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+
+  return array;
+}
 
 console.log(handleArr1([1, 2, 3, 4, 5, 6, 7]));
