@@ -1,6 +1,6 @@
 class Event {
     constructor() {
-        this.events = {};
+        this.event = {};
     }
     on(name, fn) {
         this.event[name] = this.event[name] || [];
