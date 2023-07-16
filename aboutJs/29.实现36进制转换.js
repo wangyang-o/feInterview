@@ -7,3 +7,4 @@ const to36 = (num) => {
     }
     return str;
 }
+console.log(to36(12345));
