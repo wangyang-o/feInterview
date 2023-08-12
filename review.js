@@ -119,3 +119,18 @@ const b = {
 };
 b.func();
 b.func.MyCall(a);
+
+const deepClone = (obj, cached = new Set()) => {
+  const copy = Array.isArray(obj) ? [] : {};
+  for (const key in ob) {
+    if (obj.hasOwnProperty(key)) {
+      if (typeof key === "object" && !cached.has(key)) {
+        cached.add(key);
+        copy[key] = deepClone(key, cached);
+      } else {
+        copy[key] = obj[key];
+      }
+    }
+  }
+  return copy;
+};
