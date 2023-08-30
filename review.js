@@ -110,15 +110,15 @@ Function.prototype.MyCall = function (context, ...args) {
   return context[MyCall](...args);
 };
 
-const a = { name: "wangyang" };
-const b = {
-  name: "wangyang--b",
-  func: function () {
-    console.log(this.name);
-  },
-};
-b.func();
-b.func.MyCall(a);
+// const a = { name: "wangyang" };
+// const b = {
+//   name: "wangyang--b",
+//   func: function () {
+//     console.log(this.name);
+//   },
+// };
+// b.func();
+// b.func.MyCall(a);
 
 const deepClone = (obj, cached = new Set()) => {
   const copy = Array.isArray(obj) ? [] : {};
@@ -134,3 +134,21 @@ const deepClone = (obj, cached = new Set()) => {
   }
   return copy;
 };
+
+// 柯里化
+
+const curry = (fn, ...args) => {
+  if (fn.length > args.length) {
+    return (...args1) => {
+      return curry(fn, ...args, ...args1);
+    };
+  }
+  return () => {
+    return fn(...args);
+  };
+};
+
+const sum = (a, b, c, d) => {
+  return a + b + c + d;
+};
+console.log(curry(sum)(1)(2)(3)(4)());
