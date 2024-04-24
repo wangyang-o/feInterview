@@ -10,3 +10,11 @@
 HOC（Higher-Order Component）是 React 中一种高阶组件的概念。它是一个接受一个组件作为参数并返回一个新组件的函数。
 
 HOC 允许你在不修改原始组件的情况下，通过包装组件来增强其功能。它是一种常见的代码复用和逻辑抽象技术，用于在多个组件之间共享相同的功能或逻辑。
+
+# React如何减少render频率
+
+1. 什么时候render? props变化，state变化，context变化，父组件重新渲染，force update
+
+2. 如何减少render？
+
+memo，useMemo，useCallback
