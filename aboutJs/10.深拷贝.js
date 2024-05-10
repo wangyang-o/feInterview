@@ -8,7 +8,7 @@ const deepClone = (obj, cached = new Map()) => {
     };
   }
 
-  if (typeof obj !== "object" && obj === null) return obj;
+  if (typeof obj !== "object" || obj === null) return obj;
 
   if (cached.has(obj)) return cached.get(obj);
 
