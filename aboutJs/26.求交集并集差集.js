@@ -16,3 +16,14 @@ const difference = (a, b) => [...a].filter((x) => !b.includes(x));
 console.log(union(a, b), "并集");
 console.log(intersection(a, b), "交集");
 console.log(difference(a, b), "差集");
+
+// 多个数组的交集
+/**
+ *
+ * @param  {...[]} args
+ */
+const fn = (...args) => {
+  args.reduce((pre, cur) => {
+    return intersection(pre, cur);
+  });
+};
