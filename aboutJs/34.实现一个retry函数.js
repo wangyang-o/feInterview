@@ -10,12 +10,11 @@ async function retry(fn, max, delay) {
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   while (count < max) {
     try {
-      return await fn();
-    } catch (e) {
-      count++;
+      const res = await fn();
+      return res;
+    } catch (error) {
       await sleep(delay);
     }
   }
-  throw new Error("retry failed");
+  return Promise.reject(new Error("retry failed"));
 }
-
